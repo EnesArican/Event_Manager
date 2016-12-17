@@ -1,0 +1,2 @@
+17/12/16  - Created project directory
+          - Began making browser page using bootstrap template
