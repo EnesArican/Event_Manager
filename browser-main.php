@@ -4,20 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <link rel="icon" href="../../can put some icon on page">
 
     <title>Search Events</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="docs/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="Browser_Page.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="css/browser_page.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,7 +21,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -76,23 +69,34 @@
         <p>
         <form action='Page required to post data' method="post" target="_self">
 
-        <p class="SQLfield"><textarea class="SQLfield" name="SQLfield"></textarea></p>
-        <p class="go_button"><input class="btn btn-lg btn-primary" type="submit" value=" Go "></p>
-        <input type="hidden" name="a" value="go">
-        </form>
-        </p>
 
+        <table>
+          <tr>
+            <td><p>Keyword: <textarea maxlength="10" class = "text-box"></textarea></p></td>
+            <td><p>Category: <textarea maxlength="10" class = "text-box"></textarea></p></td>
+
+          </tr>
+          <tr>
+            <td><p>DateFrom: <textarea maxlength="10" class = "text-box"></textarea></p></td>
+            <td><p>DateTo: <textarea maxlength="10" class = "text-box"></textarea></p></td>
+
+            <td> <p class="go_button"><input class="btn btn-lg btn-primary" type="submit" value=" Go "></p>
+              <input type="hidden" name="a" value="go"></td>
+          </tr>
+        </table>
 
       </div>
 
     </div> <!-- /container -->
 
 
+    <?php echo $SID["CONTENT"] ?>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="docs/dist/js/bootstrap.min.js"></script>
      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
