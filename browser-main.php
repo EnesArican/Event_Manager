@@ -11,7 +11,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="css/browser_page.css" rel="stylesheet" type="text/css">
+    <link href="css/browser_main.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -66,11 +66,9 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Search Events</h1>
-        <p>
-        <form action='Page required to post data' method="post" target="_self">
 
-
-        <table>
+        <form action=<?php echo $SID["SELF"] ?> method="post" target="_self">
+         <table>
           <tr>
             <td><p>Keyword: <textarea maxlength="10" class = "text-box"></textarea></p></td>
             <td><p>Category: <textarea maxlength="10" class = "text-box"></textarea></p></td>
@@ -80,10 +78,12 @@
             <td><p>DateFrom: <textarea maxlength="10" class = "text-box"></textarea></p></td>
             <td><p>DateTo: <textarea maxlength="10" class = "text-box"></textarea></p></td>
 
-            <td> <p class="go_button"><input class="btn btn-lg btn-primary" type="submit" value=" Go "></p>
-              <input type="hidden" name="a" value="go"></td>
+            <td> <p class="go_button"><input class="btn btn-lg btn-primary" type="submit"
+                                             name="go-button" value=" Go "></p></td>
           </tr>
-        </table>
+         </table>
+        </form>
+
 
       </div>
 

@@ -16,9 +16,11 @@ function _init( )
 {
     global $SID;
 
+    $SID["CONTENT"] = "";
+
+
     // connect to the database (persistent)
     $database = 'Event_Manager';
-
 
     try {
         switch(DBENGINE) {
@@ -57,13 +59,42 @@ function _init( )
 
 function main()
 {
-    if(isset($_REQUEST['a'])) jump($_REQUEST["a"]);
+    if(isset($_REQUEST['go-button'])){    // jump($_REQUEST["a"]);
+
+        global $SID;
+        $dbh = $SID['dbh'];
+
+        $result = $dbh->query("SELECT*FROM category");
+
+        $display = "<ul>";
+
+        foreach ($result as $r){
+
+            $display .=  "<li>".$r["type"]."</li>";
+
+        }
+
+        $display .= "</ul>";
+
+
+        $SID["CONTENT"] = $display;
+
+
+    }
+
+
+
+
+
+
+
+
 }
 
 function page( )
 {
     global $SID;
-    set_vars();
+    //set_vars();
 
     require_once "browser-main.php";
 
