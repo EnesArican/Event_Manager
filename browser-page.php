@@ -59,7 +59,7 @@ function _init( )
 
 function main()
 {
-    if(isset($_REQUEST['go-button'])){    // jump($_REQUEST["a"]);
+    if(isset($_REQUEST['button'])){    // jump($_REQUEST["a"]);
 
         global $SID;
         $dbh = $SID['dbh'];

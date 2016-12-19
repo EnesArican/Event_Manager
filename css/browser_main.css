@@ -1,26 +1,41 @@
 
-
-
 body {
   min-height: 2000px;
   padding-top: 70px;
 }
 
+.jumbotron {
 
+ padding-top: 2px;
+ padding-bottom: 55px
+}
 
-.text-box {
-  height: 25px;
-  width: 150px;
-  font-size: 15px;
+#hh{
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 15px;
 
-  resize: none;
-  overflow: hidden;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
 }
 
 
 td {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
 
- padding-right: 30px;
+
+
+#button {
+
+  float: right;
+  width: 150px;
+  padding-top: 3px;
+  height: 34px;
 
 }
 
