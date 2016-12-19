@@ -1,10 +1,10 @@
 <?php
 
+global $SID;
 
-define("DBENGINE", "mysql");
-define("MYSQLUSER", "sid");
-define("MYSQLPASS", "root");
 
+require_once "classes/sql_connector.php";
+require_once "classes/table_builder.php";
 
 
 _init();
@@ -12,93 +12,110 @@ main();
 page();
 
 
-function _init( )
-{
+function _init( ){
+
     global $SID;
 
+    $username = "project";
+    $password = "root";
+
+$connect = new sql_connector();
+$connect->connect($username,$password);
+
     $SID["CONTENT"] = "";
-
-
-    // connect to the database (persistent)
-    $database = 'Event_Manager';
-
-    try {
-        switch(DBENGINE) {
-            case 'mysql':
-                $dbh = new PDO('mysql:host=localhost;dbname=' . $database, MYSQLUSER, MYSQLPASS,
-                    array( PDO::ATTR_PERSISTENT => true ));
-                $dbh->exec('set character_set_client = utf8');
-                $dbh->exec('set character_set_connection = utf8');
-                $dbh->exec('set character_set_database = utf8');
-                $dbh->exec('set character_set_results = utf8');
-                $dbh->exec('set character_set_server = utf8');
-                $sth = $dbh->query("SHOW VARIABLES WHERE Variable_name = 'version'");
-                $SID['DBVERSION'] = 'MySQL server version ' . $sth->fetchColumn(1);
-                $SID['utf8'] = TRUE;
-                break;
-            default:
-                error('unsupported DBENGINE: ' . DBENGINE);
-        }
-    } catch (PDOException $e) {
-        error("Error while constructing PDO object: " . $e->getMessage());
-    }
-
-    if($dbh) {
-        // set exception mode for errors
-        // this is far more portable for different DB engines than trying to
-        // parse error codes
-        $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        $SID['dbh'] = $dbh;
-    } else {
-        exit();
-    }
-
+    $SID["CATEGORY"] ="";
     $SID['SELF'] = $_SERVER["SCRIPT_NAME"];
 
 }
 
+
 function main()
 {
-    if(isset($_REQUEST['button'])){    // jump($_REQUEST["a"]);
+    if(isset($_REQUEST['button'])){
 
         global $SID;
         $dbh = $SID['dbh'];
 
-        $result = $dbh->query("SELECT*FROM category");
-
-        $display = "<ul>";
-
-        foreach ($result as $r){
-
-            $display .=  "<li>".$r["type"]."</li>";
-
+        //sql query
+        try {
+            $result = $dbh->query("SELECT*FROM user_info");
+        } catch (PDOException $e) {
+            error_message($e->getMessage());
+            return;
         }
 
-        $display .= "</ul>";
+        //Check if any result is returned
+        if ($result->rowCount() > 0)  {
 
+            //sorts data into associative array
+            $result ->setFetchMode(PDO::FETCH_ASSOC);
 
-        $SID["CONTENT"] = $display;
+            //gets the 1st row of data
+            $row = $result->fetch();
 
+            $search_results = new table_builder($row, $result);
 
+            $display = $search_results ->make_table();
+
+            $SID["CONTENT"] = $display;
+        }
     }
-
-
-
-
-
-
-
-
 }
+
+
 
 function page( )
 {
     global $SID;
-    //set_vars();
+    set_dropdown();
 
     require_once "browser-main.php";
+}
+
+
+function set_dropdown(){
+
+    global $SID;
+    $dbh = $SID['dbh'];
+
+    try {
+        $result = $dbh->query("SELECT DISTINCT type FROM category");
+    } catch (PDOException $e) {
+        error_message($e->getMessage());
+        return;
+    }
+
+
+    $display = "<option value=\"All\">-- ALL --</option>\n";
+
+    foreach ($result as $r){
+        $display .=  "<option>".$r["type"]."</option>\n";
+    }
+
+    $SID["CATEGORY"] = $display;
+
+
+/*  CODE FRMO SID -- THIS CODE KEEPS SELECTION ON PAGE RELOAD
+
+    $a = "<option value=\"--NONE--\">-- Select Database --</option>\n";
+
+    while ($row = $sth->fetch()) {
+        $v = $row['Database'];
+        foreach ($db_list as $s) {
+            if ($v == $s) {
+                $selected = ($v == $database) ? ' selected' : '';
+                $a .= "<option$selected>$v</option>\n";
+            }
+*/
 
 }
+
+
+
+
+
+
+
 
 
 

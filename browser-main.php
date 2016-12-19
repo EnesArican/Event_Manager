@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <title>Search Events</title>
-
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="css/browser_main.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="css/browser-main.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -76,34 +73,36 @@
               <td>
                <div>
                 <label for="keyword">Keyword:</label>
-                <input type="email" class="form-control" id="email" >
+                <input type="text" class="form-control" id="keyword" >
                </div>
               </td>
               <td>
                <div>
                 <label for="category">Category:</label>
-                <select type="password" class="form-control">
+                <select type="text" class="form-control" id="category">
+                  <?php echo $SID["CATEGORY"] ?>
+                  </select>
                </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div>
-                  <label for="keyword">Date From:</label>
-                  <input type="text" class="form-control" id="datepicker1" >
+                  <label for="date-from">Date From:</label>
+                  <input type="date" class="form-control" id="date-from" >
                 </div>
               </td>
               <td>
                 <div>
-                  <label for="category">Date To:</label>
-                  <input type="text" class="form-control" id="datepicker2" >
+                  <label for="date-to">Date To:</label>
+                  <input type="date" class="form-control" id="date-to" >
                 </div>
               </td>
             </tr>
           </table>
 
           <input class="btn btn-lg btn-primary" type="submit"
-                 id="button" name="button" value="search">
+                 id="search-btn" name="button" value="search">
         </form>
       </div>
     </div>
@@ -122,14 +121,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-      $( function() {
-        $( "#datepicker1, #datepicker2" ).datepicker();
-      } );
-    </script>
 
+    <script src="js/browser-main.js"></script>
 
   </body>
 </html>
