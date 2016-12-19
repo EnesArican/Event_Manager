@@ -47,13 +47,7 @@ function main()
         //Check if any result is returned
         if ($result->rowCount() > 0)  {
 
-            //sorts data into associative array
-            $result ->setFetchMode(PDO::FETCH_ASSOC);
-
-            //gets the 1st row of data
-            $row = $result->fetch();
-
-            $search_results = new table_builder($row, $result);
+            $search_results = new table_builder($result);
 
             $display = $search_results ->make_table();
 

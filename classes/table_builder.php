@@ -15,11 +15,18 @@ class table_builder{
 
 
 
-    function __construct($row1, $result){
+    function __construct($result){
 
-        $this->_row1 = $row1;
+        //sorts data into associative array
+        $result ->setFetchMode(PDO::FETCH_ASSOC);
+
+        //gets the 1st row of data
+        $this->_row1 = $result->fetch();
+
         $this->_columns = array_keys($this->_row1);
         $this->_result = $result;
+
+        print_r($this->_row1);
 
     }
 
@@ -46,8 +53,6 @@ class table_builder{
 
         return $display;
     }
-
-
 
     function table_header($columns){
 
