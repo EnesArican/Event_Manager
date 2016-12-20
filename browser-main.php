@@ -73,13 +73,13 @@
               <td>
                <div>
                 <label for="keyword">Keyword:</label>
-                <input type="text" class="form-control" id="keyword" >
+                <input type="text" class="form-control" id="keyword" name="keyword" >
                </div>
               </td>
               <td>
                <div>
                 <label for="category">Category:</label>
-                <select type="text" class="form-control" id="category">
+                <select type="text" class="form-control" id="category" name="category">
                   <?php echo $SID["CATEGORY"] ?>
                   </select>
                </div>
@@ -89,13 +89,13 @@
               <td>
                 <div>
                   <label for="date-from">Date From:</label>
-                  <input type="date" class="form-control" id="date-from" >
+                  <input type="date" class="form-control" id="date-from" name="date_from">
                 </div>
               </td>
               <td>
                 <div>
                   <label for="date-to">Date To:</label>
-                  <input type="date" class="form-control" id="date-to" >
+                  <input type="date" class="form-control" id="date-to" name="date_to">
                 </div>
               </td>
             </tr>

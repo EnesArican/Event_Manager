@@ -5,6 +5,7 @@ global $SID;
 
 require_once "classes/sql_connector.php";
 require_once "classes/table_builder.php";
+require_once "classes/sql_query_builder.php";
 
 
 _init();
@@ -36,6 +37,20 @@ function main()
         global $SID;
         $dbh = $SID['dbh'];
 
+        //function sql query builder
+        //find a way to get value of input values in form
+
+       // print_r($_REQUEST['keyword']); //gets keyword
+        //print_r($_REQUEST['category']); //gets cat
+        //print_r($_REQUEST['date_from']); //gets date
+        //print_r($_REQUEST['date_to']); //gets date
+
+        $f = new SQL_query_builder();
+        $f->make_search_page_query($_REQUEST);
+
+
+
+
         //sql query
         try {
             $result = $dbh->query("SELECT*FROM user_info");
@@ -44,6 +59,8 @@ function main()
             return;
         }
 
+        //$result is returned sql query
+
         //Check if any result is returned
         if ($result->rowCount() > 0)  {
 
@@ -51,7 +68,7 @@ function main()
 
             $display = $search_results ->make_table();
 
-            $SID["CONTENT"] = $display;
+            //$SID["CONTENT"] = $display;
         }
     }
 }

@@ -25,9 +25,6 @@ class table_builder{
 
         $this->_columns = array_keys($this->_row1);
         $this->_result = $result;
-
-        print_r($this->_row1);
-
     }
 
 
@@ -35,16 +32,16 @@ class table_builder{
 
         $_row1 = $this->_row1;
         $_columns = $this->_columns;
-        $header = $this ->table_header($_columns);
+        $header = $this ->get_table_header($_columns);
         $column_count = count($_columns);
         $_result = $this->_result;
 
-        $first_row = $this->table_row($_row1, $_columns,$column_count);
+        $first_row = $this->get_table_row($_row1, $_columns,$column_count);
 
         $all_rows = "";
 
         foreach ($_result as $r){
-            $all_rows .= $this->table_row($r, $_columns,$column_count);
+            $all_rows .= $this->get_table_row($r, $_columns,$column_count);
         }
 
         $display = "<table class=\"table\" cellspacing='0'>\n";
@@ -54,7 +51,7 @@ class table_builder{
         return $display;
     }
 
-    function table_header($columns){
+    function get_table_header($columns){
 
         $header = "<thead><tr>\n";
 
@@ -67,7 +64,7 @@ class table_builder{
         return $header;
     }
 
-    function table_row($data, $columns,$count){
+    function get_table_row($data, $columns,$count){
 
         $t_row = "<tr>";
 
