@@ -20,7 +20,7 @@
 		          <div class="col-xs-12">		            
 		            <div class="control-wrapper">
 		            	<label for="username" class="control-label fa-label"><i class="fa fa-user fa-medium"></i></label>
-		            	<input type="text" class="form-control" id="username" placeholder="Username">
+		            	<input type="text" class="form-control" id="username" placeholder="Username"name="username">
 		            </div>		            	            
 		          </div>              
 		        </div>
@@ -28,7 +28,7 @@
 		          <div class="col-md-12">
 		          	<div class="control-wrapper">
 		            	<label for="password" class="control-label fa-label"><i class="fa fa-lock fa-medium"></i></label>
-		            	<input type="password" class="form-control" id="password" placeholder="Password">
+		            	<input type="password" class="form-control" id="password" placeholder="Password"name="password">
 		            </div>
 		          </div>
 		        </div>
@@ -68,5 +68,60 @@
 		      </div>
 		</div>
 	</div>
+    
+    <?php
+
+if(isset($_POST['username'],$_POST['password']))
+{
+$dbhost = 'localhost';
+$dbuser = 'project';
+$dbpass = 'root';
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, 'event_manager');
+if(! $conn )
+{
+  die('Could not connect: ' . mysql_error());
+}
+
+     
+$username=$_POST["username"];
+     
+$password=$_POST["password"];
+    
+
+
+$sql = "SELECT username,password FROM user_info where username=$username";
+$sql_p ="SELECT username,password FROM user_info where username=$password";
+    
+ $result = mysqli_query($conn, $sql );
+ $result_p = mysqli_query($conn, $sql_p );
+    
+  
+if( $result)
+{?>
+  <script>
+   alert("Username is not found!");    
+    </script>   
+    <?php
+}
+    else{
+        if($result_p)
+        {?>
+            <script>
+                alert("Password is not correct!")
+    </script>
+    <?php
+        }
+    
+
+    mysqli_close($conn);
+?>
+    <script>
+alert("Login successfull");    
+    </script>
+    <?php
+    }
+}
+      ?>
+    
 </body>
 </html>
