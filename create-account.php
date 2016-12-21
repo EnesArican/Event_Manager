@@ -54,7 +54,7 @@
 			          </div>
 			          <div class="col-md-6">
 			            <label for="password" class="control-label">Confirm Password</label>
-			            <input type="password" class="form-control" id="password_confirm" placeholder=""name="password_confrim">
+			            <input type="password" class="form-control" id="password_confirm" placeholder=""name="password_confirm">
 			          </div>
 			        </div>
 			        <div class="form-group">
@@ -65,7 +65,7 @@
 			        <div class="form-group">
 			          <div class="col-md-12">
 			            <input type="submit" value="Create account" class="btn btn-info">
-			            <a href="login-1.html" class="pull-right">Login</a>
+			            <a href="login-1.php" class="pull-right">Login</a>
 			          </div>
 			        </div>	
 				</div>				    	
@@ -122,20 +122,82 @@ $username=$_POST["username"];
 $password=$_POST["password"];
     
     
-$password_confirm=$_POST["password_confrim"];
+$password_confirm=$_POST["password_confirm"];
 
-if($password !=$password_confirm)
-{
-echo "Password is not match!";
+$sql_u ="SELECT username FROM `user_info` WHERE `username`=$username ";    
+    $result_u = mysqli_query($conn, $sql_u );
+
+if($password !=$password_confirm )
+{?>
+  <script>
+   alert("Password is not match\n");    
+    </script>   
+    <?php
+}
+    else if( !$last_name )
+{?>
+  <script>
+   alert("Please input first name\n");    
+    </script>   
+    <?php
+}
+    else if( !$email)
+{?>
+  <script>
+   alert("Please input last name\n");    
+    </script>   
+    <?php
+}
+    else if( !$username)
+{?>
+  <script>
+   alert("Please input username\n");    
+    </script>   
+    <?php
+}
+    else if( !$password)
+{?>
+  <script>
+   alert("Please input password\n");    
+    </script>   
+    <?php
 }
     
+    else if( !$password_confirm)
+{?>
+  <script>
+   alert("Please input confirm password\n");    
+    </script>   
+    <?php
+}
+    
+    else if(!$result_u)
+    {
+        ?>
+  <script>
+   alert("Username has exsisted\n");    
+    </script>   
+    <?php
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+  else{  
 $sql = "INSERT INTO user_info ".
        "(firstname,lastname,email,username,password) ".
        "VALUES ".
        "('$first_name','$last_name','$email','$username','$password')";
  $result = mysqli_query($conn, $sql );   
-    echo"$result";
-if( !$result)
+    
+
+    
+    
+if( !$result )
 {?>
   <script>
    alert("error\n");    
@@ -153,6 +215,7 @@ alert("Entered data successfully\n");
     </script>
     <?php
     }
+  }
 }
       ?>
 </body>

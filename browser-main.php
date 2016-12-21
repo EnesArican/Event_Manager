@@ -54,6 +54,7 @@
             <li><a href="../navbar/">Default</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
             <li class="active"><a href="docs/examples/navbar-fixed-top">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li><a href="login-1.php">LogIn</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -113,7 +114,7 @@
 
 
 
-    <?php echo $SID["CONTENT"] ?>
+    <?php global $SID; echo $SID["CONTENT"] ?>
 
 
     <!-- Bootstrap core JavaScript -->

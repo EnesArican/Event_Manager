@@ -64,7 +64,7 @@
 		        </div>
 		      </form>
 		      <div class="text-center">
-		      	<a href="create-account.html" class="templatemo-create-new">Create new account <i class="fa fa-arrow-circle-o-right"></i></a>	
+		      	<a href="create-account.php" class="templatemo-create-new">Create new account <i class="fa fa-arrow-circle-o-right"></i></a>	
 		      </div>
 		</div>
 	</div>
@@ -87,40 +87,52 @@ $username=$_POST["username"];
      
 $password=$_POST["password"];
     
+echo($username);
+echo($password);   
 
 
-$sql = "SELECT username,password FROM user_info where username=$username";
-$sql_p ="SELECT username,password FROM user_info where username=$password";
+$sql_u ="SELECT username FROM `user_info` WHERE `username`=$username ";
+$sql_p ="SELECT username FROM `user_info` WHERE `password`=$password ";   
+
+     $result_u = mysqli_query($conn, $sql_u );
+    $result_p = mysqli_query($conn, $sql_p );
     
- $result = mysqli_query($conn, $sql );
- $result_p = mysqli_query($conn, $sql_p );
-    
-  
-if( $result)
+ var_dump($result_u);  
+  var_dump($result_p);
+      
+      
+if( !$result_u && !$result_p)
 {?>
   <script>
-   alert("Username is not found!");    
+      alert("Login successfull");
+/* window.location.href="forgot-password.html"*/
+
+      
     </script>   
     <?php
 }
-    else{
-        if($result_p)
-        {?>
-            <script>
-                alert("Password is not correct!")
+
+   else if(!$result_u && $result_p)
+   {
+       ?>
+    <script>
+alert("Password is wrong!"); 
     </script>
     <?php
-        }
-    
+   } 
+     else if($result_u )
+   {
+       ?>
+    <script>
+alert("Can not find the user!"); 
+    </script>
+    <?php
+   } 
 
     mysqli_close($conn);
-?>
-    <script>
-alert("Login successfull");    
-    </script>
-    <?php
+
     }
-}
+
       ?>
     
 </body>
