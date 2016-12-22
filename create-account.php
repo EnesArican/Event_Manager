@@ -96,6 +96,11 @@
 
     
     
+    
+    
+    
+    
+    
     <?php
 
 if(isset($_POST['first_name']))
@@ -124,9 +129,15 @@ $password=$_POST["password"];
     
 $password_confirm=$_POST["password_confirm"];
 
-$sql_u ="SELECT username FROM `user_info` WHERE `username`=$username ";    
+$sql_u ="SELECT * FROM `user_info` WHERE `username`='$username' ";
+    
     $result_u = mysqli_query($conn, $sql_u );
-
+    $array=mysqli_fetch_array($result_u,MYSQLI_NUM);  
+    mysqli_free_result($result_u); 
+     $name = $array[4];
+    
+    
+    
 if($password !=$password_confirm )
 {?>
   <script>
@@ -171,7 +182,7 @@ if($password !=$password_confirm )
     <?php
 }
     
-    else if(!$result_u)
+    else if($name== $username)
     {
         ?>
   <script>
