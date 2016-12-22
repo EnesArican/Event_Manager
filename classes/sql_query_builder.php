@@ -9,16 +9,16 @@
 class SQL_query_builder{
 
 
-    //public $_query;
-
     function get_initial_query (){
 
         $query = "SELECT events.event_name AS 'Event', user_info.username AS 'Host', 
                    category.type AS 'Category' , events.description AS 'Description',
-                   events.location as 'Location',
+                   events.location AS 'Location',
                    DATE_FORMAT(events.date_time,'%d-%m-%y') AS 'Date',
+                   events.price as 'Price',
                    events.remaining_tickets AS 'Tickets available',
-                   DATE_FORMAT(events.sale_end_date,'%d-%m-%y') AS 'Sales End'
+                   DATE_FORMAT(events.sale_end_date,'%d-%m-%y') AS 'Sales End',
+                   events.id AS 'Tickets'
                    FROM events
                    INNER JOIN user_info
                    ON events.host_id = user_info.id
@@ -72,20 +72,18 @@ class SQL_query_builder{
 
     function check_if_additional_input(&$query){
 
-        if(strlen($query) > 660 ) $query .= " AND";
+        if(strlen($query) > 750 ) $query .= " AND";
 
     }
 
 
     function make_search_page_query($request,$dbh){
 
-       // $_query = $this->_query;
-
         $_query = $this->get_initial_query();
 
-        //fix array to work with the rest of the code
 
-        //get rid of button key pair
+        //get rid of button key pair -> fixing array
+        // to work with the rest of the code
         unset($request['button']);
 
         //if category is all then make key pair empty
@@ -95,7 +93,9 @@ class SQL_query_builder{
 
         if ($check == true)$this->modify_query($request, $_query);
 
-        //echo $_query;
+        echo $_query;
+
+        print_r(strlen($_query));
         // print_r($request);
 
         try {
