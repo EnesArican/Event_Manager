@@ -46,18 +46,19 @@ function main()
         //print_r($_REQUEST['date_to']); //gets date
 
         $f = new SQL_query_builder();
-        $f->make_search_page_query($_REQUEST);
+        $result = $f->make_search_page_query($_REQUEST, $dbh);
 
 
 
 
         //sql query
-        try {
+        /*try {
             $result = $dbh->query("SELECT*FROM user_info");
         } catch (PDOException $e) {
             error_message($e->getMessage());
             return;
         }
+        */
 
         //$result is returned sql query
 
@@ -68,7 +69,7 @@ function main()
 
             $display = $search_results ->make_table();
 
-            //$SID["CONTENT"] = $display;
+            $SID["CONTENT"] = $display;
         }
     }
 }

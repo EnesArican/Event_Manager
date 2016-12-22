@@ -47,50 +47,64 @@ class SQL_query_builder{
 
 
         if (!empty ($request['keyword']) || $request['keyword'] !==""){
-
-            //search keyword...... some crazy code .....
-            //$query .= " ";
+            $query .= " CONCAT(events.event_name, user_info.username, category.type,
+                        events.description, events.location) 
+                        LIKE '%".$request['keyword']."%'";
         }
 
         if (!empty ($request['category']) || $request['category'] !==""){
+            $this->check_if_additional_input($query);
             $query .= " category.type = '".$request['category']."'";
         }
 
         if (!empty ($request['date_from']) || $request['date_from'] !==""){
-          //  $query .= " category.type = '".$request['category']."'";
+            $this->check_if_additional_input($query);
+            $query .= " events.date_time >= '".$request['date_from']."'";
         }
 
         if (!empty ($request['date_to']) || $request['date_to'] !==""){
-          //  $query .= " category.type = '".$request['category']."'";
+            $this->check_if_additional_input($query);
+            $query .= " events.date_time <= '".$request['date_to']."'";
         }
 
 
     }
 
+    function check_if_additional_input(&$query){
 
-    function make_search_page_query($request){
+        if(strlen($query) > 660 ) $query .= " AND";
+
+    }
+
+
+    function make_search_page_query($request,$dbh){
 
        // $_query = $this->_query;
 
         $_query = $this->get_initial_query();
 
+        //fix array to work with the rest of the code
 
         //get rid of button key pair
         unset($request['button']);
-        if ($request['category']=="All") $request['category'] = "";
 
+        //if category is all then make key pair empty
+        if ($request['category']=="All") $request['category'] = "";
 
         $check = $this->check_user_input($request);
 
+        if ($check == true)$this->modify_query($request, $_query);
 
-        if ($check == true) $this->modify_query($request, $_query);
+        //echo $_query;
+        // print_r($request);
 
-             echo $_query;
-
-            print_r($request);
-
-
-
+        try {
+            $result = $dbh->query($_query);
+            return $result;
+        } catch (PDOException $e) {
+            error_message($e->getMessage());
+            return;
+        }
 
     }
 
