@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if(isset($_SESSION['username'])){
+ echo ($_SESSION['username']);
+}
+  
+
+else{
+  
+echo("Please log in");
+}
+?>
+
+
+
 <!DOCTYPE html>
 <head>
 	<title>Forgot Password</title>
@@ -30,8 +46,8 @@
 		          <div class="col-md-12">
 		            <input type="submit" value="Submit" class="btn btn-danger">
                     <br><br>
-                    <a href="login-1.html">Login One</a> |
-                    <a href="login-2.html">Login Two</a>
+                    <a href="login-1.php">Login One</a> |
+                   
 		          </div>
 		        </div>
 		      </form>

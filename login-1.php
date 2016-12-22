@@ -1,3 +1,10 @@
+
+
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <head>
 	<title>Login One</title>
@@ -138,7 +145,6 @@ if($name == $username && $pass== $password)
 {?>
   <script>
       alert("Login successfull");
- window.location.href="forgot-password.html";
 
       
     </script>   
@@ -165,6 +171,7 @@ alert("Can not find the user!");
     mysqli_close($conn);
 
     }
+    $_SESSION['username']=$username;
 }
       ?>
     

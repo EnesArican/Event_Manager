@@ -103,7 +103,7 @@
 
 
 
-    <?php global $SID; echo $SID["CONTENT"] ?>
+    <?php $SID; echo $SID["CONTENT"] ?>
 
 
     <!-- Bootstrap core JavaScript -->
