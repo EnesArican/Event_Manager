@@ -145,6 +145,7 @@ if($name == $username && $pass== $password)
 {?>
   <script>
       alert("Login successfull");
+ window.location.href="Create event.php";
 
       
     </script>   
