@@ -3,6 +3,60 @@
  */
 
 
+$(function(){
+
+    // Handle submit request
+    $('#form').on('submit',  request_search_results);
+
+    //book ticket
+    $('body').on('click', '.ticket-button', request_ticket_booking);
+
+});
+
+
+function request_search_results(event){
+
+    // Prevent form being submitted
+    event.preventDefault();
+
+    // Put form values into format
+    // that can be passed though url
+    var parameters = $('form').serialize();
+
+
+    //make ajax call
+    $.ajax({
+        dataType: "html",
+        url: "browser-search.php",
+        data: parameters,
+        success: (function (responseText) {
+            $('#search-results').html(responseText);
+            add_tickets_column()
+        }),
+        error: (function(){
+            $('#search-results').html("<h1>ERROR - Could not return any results</h1>");
+        })
+    });
+
+
+
+
+
+
+
+
+}
+
+
+function add_tickets_column(){
+
+    // Get number of rows in table
+    //var rowcount = $('.table tr').length;
+
+    $('.result-table tr').not(":first").each(add_book_button);
+
+}
+
 
 function add_book_button(){
 
@@ -19,34 +73,23 @@ function add_book_button(){
         //alert("Book Tickets");
 
 
-        $(this).find("td").eq(9).html("<input type=\"button\" value=\"Book Tickets\">");
+        $(this).find("td").eq(9).html("<input type=\"button\" id=" + event_id +
+                                      " class='ticket-button' value=\"Book Ticket\">");
 
-    }else{//alert("Sale Ended")
-         }
-
-
-
+    }else{
+        $(this).find("td").eq(9).html("<p>Tickets Unavailable</p>");
+    }
 
 }
 
 
+function request_ticket_booking(event){
 
-function add_ticekts_column(){
-
-    // Get number of rows in table
-    var rowcount = $('.table tr').length;
-
-    //for(i = 1; i < rowcount; i++)
-
-    $('.table tr').not(":first").each(add_book_button);
-
-      //  var last_sale_date = $(this).find("td").eq(7).html();
-
-        //alert(last_sale_date);
+    var event_id = $(this).attr('id');
 
 
 
-    //append("<td>" + rowcount + "</td>");
+    alert(event_id);
 
 }
 
@@ -54,12 +97,12 @@ function add_ticekts_column(){
 
 
 
-$(function(){
-
-
-    add_ticekts_column()
 
 
 
-});
+
+
+
+
+
 

@@ -9,6 +9,38 @@
 class SQL_query_builder{
 
 
+
+
+    function make_search_page_query($request,$dbh){
+
+        $_query = $this->get_initial_query();
+
+        //get rid of button key pair -> fixing array
+        // to work with the rest of the code
+        unset($request['button']);
+
+        //if category is 'All' then make key pair empty
+        if ($request['category']=="All") $request['category'] = "";
+
+        $check = $this->check_user_input($request);
+
+        if ($check == true)$this->modify_query($request, $_query);
+
+        //echo $_query;            --> For Testing Purposes
+        //print_r(strlen($_query));
+        // print_r($request);
+
+        try {
+            $result = $dbh->query($_query);
+            return $result;
+        } catch (PDOException $e) {
+            error_message($e->getMessage());
+            return;
+        }
+
+    }
+
+
     function get_initial_query (){
 
         $query = "SELECT events.event_name AS 'Event', user_info.username AS 'Host', 
@@ -58,11 +90,13 @@ class SQL_query_builder{
         }
 
         if (!empty ($request['date_from']) || $request['date_from'] !==""){
+            $this->correct_date_format($request['date_from']);
             $this->check_if_additional_input($query);
             $query .= " events.date_time >= '".$request['date_from']."'";
         }
 
         if (!empty ($request['date_to']) || $request['date_to'] !==""){
+            $this->correct_date_format($request['date_to']);
             $this->check_if_additional_input($query);
             $query .= " events.date_time <= '".$request['date_to']."'";
         }
@@ -70,51 +104,39 @@ class SQL_query_builder{
 
     }
 
+    // If additional input insert 'AND' to sql query
     function check_if_additional_input(&$query){
 
         if(strlen($query) > 750 ) $query .= " AND";
 
     }
 
+    // Put date into correct format for sql
+    function correct_date_format(&$date){
+        $a = explode('/',$date);
+        $date = $a[2].'-'.$a[1].'-'.$a[0];
+    }
 
-    function make_search_page_query($request,$dbh){
-
-        $_query = $this->get_initial_query();
 
 
-        //get rid of button key pair -> fixing array
-        // to work with the rest of the code
-        unset($request['button']);
+    function book_ticket_query($dbh){
 
-        //if category is all then make key pair empty
-        if ($request['category']=="All") $request['category'] = "";
+        $_query = "INSERT INTO 'booked_events' ('event_id', 'user_id')
+                    VALUES (, '1', '2')";
 
-        $check = $this->check_user_input($request);
 
-        if ($check == true)$this->modify_query($request, $_query);
-
-        echo $_query;
-
-        print_r(strlen($_query));
-        // print_r($request);
 
         try {
-            $result = $dbh->query($_query);
+            $result = $dbh->exec($_query);
             return $result;
         } catch (PDOException $e) {
             error_message($e->getMessage());
             return;
         }
-
     }
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+

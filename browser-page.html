@@ -30,7 +30,7 @@
           </button>
 
           <!-- have global variables as button names on nav bar-->
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Musical events</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -57,7 +57,7 @@
 
       <div>
 
-        <form action=<?php echo $SID["SELF"] ?> method="post" target="_self">
+        <form id="form" action="browser-search.php" method="post">
           <table>
             <tr>
               <td>
@@ -70,8 +70,16 @@
                <div>
                 <label for="category">Category:</label>
                 <select type="text" class="form-control" id="category" name="category">
-                  <?php echo $SID["CATEGORY"] ?>
-                  </select>
+                  <option value="All">-- ALL --</option>
+                  <option value="Classical">Classical</option>
+                  <option value="Hip Hop">Hip Hop</option>
+                  <option value="Rock">Rock</option>
+                  <option value="Techno">Techno</option>
+                  <option value="Jazz">Jazz</option>
+                  <option value="R&B">R&B</option>
+                  <option value="Rap">Rap</option>
+                  <option value="Other">Other</option>
+                </select>
                </div>
               </td>
             </tr>
@@ -79,13 +87,15 @@
               <td>
                 <div>
                   <label for="date-from">Date From:</label>
-                  <input type="date" class="form-control" id="date-from" name="date_from">
+                  <input type="text" class="form-control" id="date-from"
+                         placeholder="dd/mm/yyyy" name="date_from">
                 </div>
               </td>
               <td>
                 <div>
                   <label for="date-to">Date To:</label>
-                  <input type="date" class="form-control" id="date-to" name="date_to">
+                  <input type="text" class="form-control" id="date-to"
+                         placeholder="dd/mm/yyyy" name="date_to">
                 </div>
               </td>
             </tr>
@@ -99,7 +109,7 @@
     </div>
 
 
-    <?php $SID; echo $SID["CONTENT"] ?>
+    <div id="search-results"></div>
 
 
     <!-- Bootstrap core JavaScript -->
@@ -107,7 +117,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script src="js/browser.js"></script>
+  <script type="text/javascript" src="js/browser.js"></script>
+
 
 
   </body>

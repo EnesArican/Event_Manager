@@ -44,7 +44,7 @@ class table_builder{
             $all_rows .= $this->get_table_row($r, $_columns,$column_count);
         }
 
-        $display = "<table class=\"table\" cellspacing='0'>\n";
+        $display = "<table class=\"result-table\" cellspacing='0'>\n";
         $display .=$header.$first_row.$all_rows;
         $display .="</table>";
 
