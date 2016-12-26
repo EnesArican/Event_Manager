@@ -7,39 +7,39 @@
  */
 
 
+
 require_once "classes/table_builder.php";
 
-header("content-type: html");
 
-_init();
+//_init();  --> problem when connection is made to SQL for some reason
 main();
 
 function _init( ){
-
     $username = "project";
     $password = "root";
 
     $connect = new sql_connector();
     $connect->connect($username,$password);
-
 }
 
 
 function main(){
+
     global $SID;
     $dbh = $SID['dbh'];
 
+    $event_id = $_GET{'event_id'};
+    $user_id = 1; //for now (should get from global variable e.g SID)
 
+    echo "HEllO  ";
+    echo $event_id;
+
+    /*
     $f = new SQL_query_builder();
-    $result = $f->book_ticket_query($dbh);
-
-    //$result is returned sql query
+    $result = $f->book_ticket_query($dbh, $event_id, $user_id);  //result is boolean
 
     //Check if any result is returned
-    if ($result->rowCount() > 0)  {
-        $search_results = new table_builder($result);
-        $display = $search_results ->make_table();
+   if ($result == TRUE)echo "DONE";
 
-        echo $display;
-    }
+    */
 }

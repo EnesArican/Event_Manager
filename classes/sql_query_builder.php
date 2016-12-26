@@ -119,19 +119,19 @@ class SQL_query_builder{
 
 
 
-    function book_ticket_query($dbh){
+    function book_ticket_query($dbh, $event_id, $user_id){
 
         $_query = "INSERT INTO 'booked_events' ('event_id', 'user_id')
-                    VALUES (, '1', '2')";
+                    VALUES ('".$event_id."', '".$user_id."')";
 
 
 
         try {
-            $result = $dbh->exec($_query);
-            return $result;
+            $dbh->exec($_query);
+            return true;
         } catch (PDOException $e) {
             error_message($e->getMessage());
-            return;
+            return false;
         }
     }
 }

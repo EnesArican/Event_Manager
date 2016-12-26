@@ -23,7 +23,6 @@ function request_search_results(event){
     // that can be passed though url
     var parameters = $('form').serialize();
 
-
     //make ajax call
     $.ajax({
         dataType: "html",
@@ -37,14 +36,6 @@ function request_search_results(event){
             $('#search-results').html("<h1>ERROR - Could not return any results</h1>");
         })
     });
-
-
-
-
-
-
-
-
 }
 
 
@@ -86,10 +77,41 @@ function add_book_button(){
 function request_ticket_booking(event){
 
     var event_id = $(this).attr('id');
+    var parameters = "event_id=" + event_id;
+
+
+    //display message - are you sure you want to book ticket ? yes/no
+    //if press yes -> make ajax request
+
+    //ajax call
+    $.ajax({
+        dataType: "text",
+        url: "book-tickets.php",
+        data: parameters,
+        success: (function (responseText) {
+
+            // display message ticket booked.
+          alert(responseText + "Event has been booked");
+        }),
+        error: (function(){
+            alert("could not book ticket - ajax request failed");
+        })
+    });
 
 
 
-    alert(event_id);
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
