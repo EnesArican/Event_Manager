@@ -5,38 +5,33 @@ global $SID;
 
 require_once "classes/sql_connector.php";
 require_once "classes/table_builder.php";
-require_once "classes/sql_query_builder.php";
+require_once "classes/search_query_builder.php";
 
 
 header("content-type: html");
-_init();
-main();
+$sql = init();
+main($sql);
 
-function _init( ){
+function init( ){
 
     $username = "project";
     $password = "root";
 
-    $connect = new sql_connector();
-    $connect->connect($username,$password);
+    $sql = new sql_connector();
+    $sql->connect($username,$password);
 
+    return $sql;
 }
 
 
-function main(){
-    global $SID;
-    $dbh = $SID['dbh'];
-
+function main($sql){
         // print_r($_REQUEST['keyword']); //gets keyword  --> For Testing/Debugging
-        //print_r($_REQUEST['category']); //gets cat
-        //print_r($_REQUEST['date_from']); //gets date
-        //print_r($_REQUEST['date_to']); //gets date
-
 
     $f = new SQL_query_builder();
-    $result = $f->make_search_page_query($_REQUEST, $dbh);
+    $query = $f->make_search_page_query($_REQUEST);
 
-    //$result is returned sql query
+    $result = $sql->execute_select_query($query);
+    //$result is returned sql data
 
     //Check if any result is returned
     if ($result->rowCount() > 0)  {

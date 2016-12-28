@@ -50,16 +50,33 @@ class sql_connector{
         } else {
             exit();
         }
-
-
     }
 
+    function execute_select_query($query){
+        global $SID;
+        $dbh = $SID['dbh'];
 
+        try {
+            $result = $dbh->query($query);
+            return $result;
+        } catch (PDOException $e) {
+            error_message($e->getMessage());
+            return;
+        }
+    }
 
+    function execute_CRUD_query($query){
+        global $SID;
+        $dbh = $SID['dbh'];
 
-
-
-
-
+        try {
+            $conn = $dbh->prepare($query);
+            $result = $conn->execute();
+            return $result;
+        } catch (PDOException $e) {
+            error_message($e->getMessage());
+            return;
+        }
+    }
 
 }

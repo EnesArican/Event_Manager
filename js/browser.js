@@ -8,7 +8,7 @@ $(function(){
     // Handle submit request
     $('#form').on('submit',  request_search_results);
 
-    //book ticket
+    // Book ticket
     $('body').on('click', '.ticket-button', request_ticket_booking);
 
 });
@@ -42,10 +42,7 @@ function request_search_results(event){
 function add_tickets_column(){
 
     // Get number of rows in table
-    //var rowcount = $('.table tr').length;
-
     $('.result-table tr').not(":first").each(add_book_button);
-
 }
 
 
@@ -58,30 +55,35 @@ function add_book_button(){
     var today = new Date();
 
 
-
     if (tickets_remaining > 0 && sale_end_date > today){
-
-        //alert("Book Tickets");
-
-
         $(this).find("td").eq(9).html("<input type=\"button\" id=" + event_id +
                                       " class='ticket-button' value=\"Book Ticket\">");
-
     }else{
         $(this).find("td").eq(9).html("<p>Tickets Unavailable</p>");
     }
-
 }
 
 
-function request_ticket_booking(event){
+function request_ticket_booking(event) {
 
     var event_id = $(this).attr('id');
     var parameters = "event_id=" + event_id;
 
+    //display confirmation message
+    var check = confirm("Do you want to book tickets for this event?");
 
-    //display message - are you sure you want to book ticket ? yes/no
-    //if press yes -> make ajax request
+    if (check == true)book_tickets(parameters);
+
+
+
+
+    //###############   YOU ARE HERE  ###################
+
+
+
+}
+
+function book_tickets(parameters){
 
     //ajax call
     $.ajax({
@@ -91,27 +93,15 @@ function request_ticket_booking(event){
         success: (function (responseText) {
 
             // display message ticket booked.
-          alert(responseText + "Event has been booked");
+            alert(responseText);
+
+
+           //need to dynamically repress search button to update displayed table
         }),
         error: (function(){
             alert("could not book ticket - ajax request failed");
         })
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

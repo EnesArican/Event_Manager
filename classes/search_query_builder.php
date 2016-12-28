@@ -9,9 +9,7 @@
 class SQL_query_builder{
 
 
-
-
-    function make_search_page_query($request,$dbh){
+    function make_search_page_query($request){
 
         $_query = $this->get_initial_query();
 
@@ -26,18 +24,7 @@ class SQL_query_builder{
 
         if ($check == true)$this->modify_query($request, $_query);
 
-        //echo $_query;            --> For Testing Purposes
-        //print_r(strlen($_query));
-        // print_r($request);
-
-        try {
-            $result = $dbh->query($_query);
-            return $result;
-        } catch (PDOException $e) {
-            error_message($e->getMessage());
-            return;
-        }
-
+       return $_query;
     }
 
 
@@ -117,23 +104,6 @@ class SQL_query_builder{
         $date = $a[2].'-'.$a[1].'-'.$a[0];
     }
 
-
-
-    function book_ticket_query($dbh, $event_id, $user_id){
-
-        $_query = "INSERT INTO 'booked_events' ('event_id', 'user_id')
-                    VALUES ('".$event_id."', '".$user_id."')";
-
-
-
-        try {
-            $dbh->exec($_query);
-            return true;
-        } catch (PDOException $e) {
-            error_message($e->getMessage());
-            return false;
-        }
-    }
 }
 
 

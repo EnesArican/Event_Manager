@@ -6,40 +6,42 @@
  * Time: 18:19
  */
 
-
+header("Content-type: text/plain");
 
 require_once "classes/table_builder.php";
+require_once "classes/sql_connector.php";
+require_once "classes/ticket_booker.php";
 
 
-//_init();  --> problem when connection is made to SQL for some reason
-main();
+$sql = init();
+main($sql);
 
-function _init( ){
+function init(){
     $username = "project";
     $password = "root";
 
     $connect = new sql_connector();
     $connect->connect($username,$password);
+
+    return $connect;
 }
 
 
-function main(){
-
-    global $SID;
-    $dbh = $SID['dbh'];
+function main($sql){
 
     $event_id = $_GET{'event_id'};
     $user_id = 1; //for now (should get from global variable e.g SID)
 
-    echo "HEllO  ";
-    echo $event_id;
+    $booker = new ticket_booker();
 
-    /*
-    $f = new SQL_query_builder();
-    $result = $f->book_ticket_query($dbh, $event_id, $user_id);  //result is boolean
+    //Check if ticket has already been booked by user
+    $check = $booker->already_booked($sql,$event_id,$user_id);
 
-    //Check if any result is returned
-   if ($result == TRUE)echo "DONE";
-
-    */
+    if ($check == true){  // User already has the event booked
+        die("A booking has already been made for this event");
+    }else{
+        // Book ticket -> update sql tables
+        $booker->book_ticket($sql,$event_id,$user_id);
+        echo "Event has been booked";
+    }
 }
