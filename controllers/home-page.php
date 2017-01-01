@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require_once "../classes/sql_connector.php";
 require_once "../classes/table_builder.php";
@@ -7,7 +8,7 @@ require_once "../classes/search_query_builder.php";
 
 header("content-type: html");
 
-$user_id = 3; //for now - need to get from session variable
+$user_id = $_SESSION['user_id'];
 
 $sql = init();
 main($sql, $user_id);
@@ -42,7 +43,7 @@ function main($sql, $user_id){
         $display = $search_results ->make_table();
 
         echo $display;
-    }
+    }else{no_results_returned();}
 }
 
 
@@ -85,7 +86,18 @@ function hosted_events_query($user_id){
     return $query;
 }
 
+function no_results_returned(){
 
+    if($_REQUEST["btn_id"] == "btn-booked-events") {
+        echo "No events have been booked";
+    }
+
+    if($_REQUEST["btn_id"] == "btn-hosted-events") {
+        echo "no events have been hosted";
+    }
+
+
+}
 
 
 

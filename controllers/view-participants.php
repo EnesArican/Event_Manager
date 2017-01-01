@@ -29,9 +29,13 @@ function init( ){
 
 function main($sql, $event_id){
 
-    $query = "SELECT user_info.username AS 'Participants' FROM bookings 
+    $query = "SELECT events.event_name AS 'event_name',
+              user_info.username AS 'participants'
+              FROM bookings 
               INNER JOIN user_info
               ON bookings.user_id = user_info.id
+              INNER JOIN events
+              ON events.id = bookings.event_id
               WHERE bookings.event_id = ".$event_id;
 
 
@@ -41,25 +45,31 @@ function main($sql, $event_id){
     //Check if any result is returned
     if ($result->rowCount() > 0)  {
 
-
-        //$search_results = new table_builder($result);
-        //$display = $search_results ->make_table();
-        //echo $display;
-
-        $result ->setFetchMode(PDO::FETCH_ASSOC);
-
-        $display = "<h2>Participants</h2>\n";
-        $display .="<ul>";
-
-        foreach($result as $r) {
-            $display .= "<li>" . $r['Participants'] . "</li>";
-        }
-
-        $display .= "<ul>";
-
+        $display = make_list($result);
         echo $display;
-
     }
+
+}
+
+
+
+function make_list($result){
+
+    $result ->setFetchMode(PDO::FETCH_ASSOC);
+
+    $list ="<ul>";
+
+    foreach($result as $r) {
+        $list .= "<li>" . $r['participants'] . "</li>";
+        $event_name = $r['event_name'];
+    }
+
+    $list .= "<ul>";
+    $title = "<h2>Participants for ".$event_name."</h2>\n";
+
+    $display = $title.$list;
+
+    return $display;
 
 }
 

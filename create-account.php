@@ -65,7 +65,7 @@
 			        <div class="form-group">
 			          <div class="col-md-12">
 			            <input type="submit" value="Create account" class="btn btn-info">
-			            <a href="login-1.php" class="pull-right">Login</a>
+			            <a href="views/login-1.php" class="pull-right">Login</a>
 			          </div>
 			        </div>	
 				</div>				    	

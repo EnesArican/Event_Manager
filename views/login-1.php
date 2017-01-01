@@ -14,9 +14,9 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/templatemo_style.css" rel="stylesheet" type="text/css">
 </head>
 <body class="templatemo-bg-gray">
 	<div class="container">
@@ -71,7 +71,7 @@ session_start();
 		        </div>
 		      </form>
 		      <div class="text-center">
-		      	<a href="create-account.php" class="templatemo-create-new">Create new account <i class="fa fa-arrow-circle-o-right"></i></a>	
+		      	<a href="../create-account.php" class="templatemo-create-new">Create new account <i class="fa fa-arrow-circle-o-right"></i></a>
 		      </div>
 		</div>
 	</div>
@@ -145,7 +145,7 @@ if($name == $username && $pass== $password)
 {?>
   <script>
       alert("Login successfull");
- window.location.href="Create event.php";
+ window.location.href="home-page.html";
 
       
     </script>   
@@ -173,6 +173,7 @@ alert("Can not find the user!");
 
     }
     $_SESSION['username']=$username;
+	$_SESSION['user_id']=$array[0];
 }
       ?>
     

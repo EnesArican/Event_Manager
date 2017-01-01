@@ -46,7 +46,7 @@ echo("Please log in");
 		          <div class="col-md-12">
 		            <input type="submit" value="Submit" class="btn btn-danger">
                     <br><br>
-                    <a href="login-1.php">Login One</a> |
+                    <a href="views/login-1.php">Login One</a> |
                    
 		          </div>
 		        </div>

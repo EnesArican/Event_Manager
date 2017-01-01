@@ -5,14 +5,34 @@
 
 $(function(){
 
+    get_username();
+
     // retrieve table on button click
     $('body').on('click', '.btn',  request_data);
 
     // View Participants
     $('body').on('click', '.participants-button', request_view_participants);
 
+
 });
 
+
+
+function get_username(){
+
+    //make ajax call
+    $.ajax({
+        dataType: "html",
+        url: "../controllers/get-username.php",
+        success: (function (responseText) {
+            $('#heading').append(responseText);
+        }),
+        error: (function(){
+        })
+    });
+
+
+}
 
 function request_data(event){
 
@@ -92,6 +112,7 @@ function request_view_participants(event) {
 
 
 }
+
 
 
 

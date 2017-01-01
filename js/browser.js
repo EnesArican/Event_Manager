@@ -88,8 +88,7 @@ function book_tickets(parameters){
             // display message ticket booked.
             alert(responseText);
 
-
-           //need to dynamically repress search button to update displayed table
+           //dynamically update displayed table
 
         }),
         error: (function(){

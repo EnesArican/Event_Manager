@@ -6,15 +6,18 @@
  * Time: 18:19
  */
 
+session_start();
+
 header("Content-type: text/plain");
 
 require_once "../classes/table_builder.php";
 require_once "../classes/sql_connector.php";
 require_once "../classes/ticket_booker.php";
 
+$user_id =  $_SESSION['user_id'];
 
 $sql = init();
-main($sql);
+main($sql, $user_id);
 
 function init(){
     $username = "project";
@@ -27,10 +30,9 @@ function init(){
 }
 
 
-function main($sql){
+function main($sql, $user_id){
 
     $event_id = $_GET{'event_id'};
-    $user_id = 1; //for now (should get from global variable e.g SID)
 
     $booker = new ticket_booker();
 

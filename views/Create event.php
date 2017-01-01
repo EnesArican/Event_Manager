@@ -11,10 +11,10 @@ session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
-    <script type="text/javascript" src="create-account.php"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/templatemo_style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../create-account.php"></script>
 </head>
 <body class="templatemo-bg-gray">
 	<h1 class="margin-bottom-15">Create Event</h1>
@@ -70,8 +70,16 @@ session_start();
 			          </div>  
 			          <div class="col-md-6">		          	
 			            <label for="category" class="control-label">Category</label>
-			            <input type="text" class="form-control" id="category" placeholder=""name="category">		            		            		            
-			          </div>             
+                          <select type="text" class="form-control" id="category" name="category">
+                              <option value="Other">Other</option>
+                              <option value="Classical">Classical</option>
+                              <option value="Hip Hop">Hip Hop</option>
+                              <option value="Rock">Rock</option>
+                              <option value="Techno">Techno</option>
+                              <option value="Jazz">Jazz</option>
+                              <option value="R&B">R&B</option>
+                              <option value="Rap">Rap</option>
+                          </select></div>
 			        </div>
 			    	
                     
@@ -105,7 +113,7 @@ session_start();
 	  </div>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
     
     
