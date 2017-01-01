@@ -3,9 +3,9 @@
 global $SID;
 
 
-require_once "classes/sql_connector.php";
-require_once "classes/table_builder.php";
-require_once "classes/search_query_builder.php";
+require_once "../classes/sql_connector.php";
+require_once "../classes/table_builder.php";
+require_once "../classes/search_query_builder.php";
 
 
 header("content-type: html");

@@ -8,9 +8,9 @@
 
 header("Content-type: text/plain");
 
-require_once "classes/table_builder.php";
-require_once "classes/sql_connector.php";
-require_once "classes/ticket_booker.php";
+require_once "../classes/table_builder.php";
+require_once "../classes/sql_connector.php";
+require_once "../classes/ticket_booker.php";
 
 
 $sql = init();

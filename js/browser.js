@@ -26,7 +26,7 @@ function request_search_results(event){
     //make ajax call
     $.ajax({
         dataType: "html",
-        url: "browser-search.php",
+        url: "../controllers/browser-search.php",
         data: parameters,
         success: (function (responseText) {
             $('#search-results').html(responseText);
@@ -74,13 +74,6 @@ function request_ticket_booking(event) {
 
     if (check == true)book_tickets(parameters);
 
-
-
-
-    //###############   YOU ARE HERE  ###################
-
-
-
 }
 
 function book_tickets(parameters){
@@ -88,7 +81,7 @@ function book_tickets(parameters){
     //ajax call
     $.ajax({
         dataType: "text",
-        url: "book-tickets.php",
+        url: "../controllers/book-tickets.php",
         data: parameters,
         success: (function (responseText) {
 
@@ -97,6 +90,7 @@ function book_tickets(parameters){
 
 
            //need to dynamically repress search button to update displayed table
+
         }),
         error: (function(){
             alert("could not book ticket - ajax request failed");

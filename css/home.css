@@ -1,0 +1,162 @@
+
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+.jumbotron {
+ padding-top: 2px;
+ padding-bottom: 55px
+}
+
+#hh{
+
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+
+.btn {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #82a0cc), color-stop(1, #627c99));
+  background:-moz-linear-gradient(top, #82a0cc 5%, #627c99 100%);
+  background:-webkit-linear-gradient(top, #82a0cc 5%, #627c99 100%);
+  background:-o-linear-gradient(top, #82a0cc 5%, #627c99 100%);
+  background:-ms-linear-gradient(top, #82a0cc 5%, #627c99 100%);
+  background:linear-gradient(to bottom, #82a0cc 5%, #627c99 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#82a0cc', endColorstr='#627c99',GradientType=0);
+  background-color:#82a0cc;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  border:2px solid #d1d6e3;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Trebuchet MS;
+  font-size:15px;
+  font-weight:bold;
+  padding:12px 21px;
+  text-decoration:none;
+}
+.btn:hover {
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#627c99', endColorstr='#82a0cc',GradientType=0);
+  background-color:#627c99;
+  color: #DCDCDC;
+}
+.btn:active {
+  position:relative;
+  top:1px;
+}
+
+
+table {
+  margin: 0 auto;
+  width: 100%;
+}
+
+td {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+#search-btn {
+  float: right;
+  width: 150px;
+  padding-top: 3px;
+  height: 34px;
+}
+
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/*###############  CSS for TABLE ###################*/
+
+
+table.result-table a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+table.result-table a:active,
+table.table a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+
+table.result-table th {
+  padding:10px 20px 20px 5px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+  text-align: center !important;
+}
+
+table.result-table {
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  background:#eaebec;
+  margin: 0 auto;
+  border:#ccc 1px solid;
+  width: 100%; !important;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+
+table.result-table tr:first-child th:first-child {
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+table.result-table tr:first-child th:last-child {
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:3px;
+}
+table.result-table tr {
+  text-align: center;
+  padding-left:20px;
+}
+
+table.result-table td {
+  padding:3px 3px 5px 5px;
+  border-top: 1px solid #ffffff;
+  border-bottom:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table.result-table tr.even td {
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+
+
+table.result-table tr:hover td {
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+
+#participants {
+
+  margin-top: 50px;
+
+}
