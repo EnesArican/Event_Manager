@@ -48,6 +48,9 @@ function main($sql, $event_id){
         $display = make_list($result);
         echo $display;
     }
+    else{
+        echo("Nobody has booked this event");
+    }
 
 }
 

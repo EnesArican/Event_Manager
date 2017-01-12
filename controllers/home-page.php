@@ -8,10 +8,33 @@ require_once "../classes/search_query_builder.php";
 
 header("content-type: html");
 
-$user_id = $_SESSION['user_id'];
 
-$sql = init();
-main($sql, $user_id);
+check();
+
+
+
+function check(){
+   if(isset($_SESSION['user_id'])){
+       $user_id = $_SESSION['user_id'];
+       $sql = init();
+       main($sql, $user_id);
+   }
+    else{
+      ?>
+  <script>
+      alert("Please Log In");
+
+
+      
+    </script>   
+    <?php
+}
+   
+}
+
+
+
+
 
 function init( ){
     $username = "project";
@@ -24,7 +47,9 @@ function init( ){
 }
 
 function main($sql, $user_id){
-
+    
+        
+    
     if($_REQUEST["btn_id"] == "btn-booked-events") {
        $query = booked_events_query($user_id);
     }
@@ -44,7 +69,9 @@ function main($sql, $user_id){
 
         echo $display;
     }else{no_results_returned();}
-}
+    }
+    
+
 
 
 function booked_events_query($user_id){
