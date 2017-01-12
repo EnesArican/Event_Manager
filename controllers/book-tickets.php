@@ -95,8 +95,8 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, 'event_manager');
 }
 
 function send(){
-    
-$to = "$_SESSION['user_email']";
+  $mail=$_SESSION['user_email']; 
+$to = "$mail";
 $subject = "Your Event Is Coming Soon";
 $message = "Your event ".$event."is coming soon. Do forget to attend!";
 $from = "wangshenbao.ben@gmail.com";
@@ -105,7 +105,7 @@ mail($to,$subject,$message,$headers);
 
 // send a email//
   
-    
+
     
 }
     
@@ -124,4 +124,3 @@ mail($to,$subject,$message,$headers);
     
     
     
-}
