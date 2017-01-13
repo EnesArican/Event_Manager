@@ -129,7 +129,7 @@ $location=$_POST["location"];
     
 $ticket_amount=$_POST["ticket_amount"];
      
-$price="￡ £ £".$_POST["price"];
+$price="GBP ".$_POST["price"];
      
 $date=$_POST["date"];
     

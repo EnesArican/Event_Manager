@@ -109,7 +109,7 @@ $sql_u ="SELECT * FROM `user_info` WHERE `username`='$username' ";
     $array=mysqli_fetch_array($result_u,MYSQLI_NUM);  
     mysqli_free_result($result_u); 
      $name = $array[4];
-    
+    $email_db= $array[3];
     
     
 if($password !=$password_confirm )
@@ -165,7 +165,14 @@ if($password !=$password_confirm )
     <?php
     }
     
-    
+    else if($email== $email)
+    {
+        ?>
+  <script>
+   alert("Email has been used\n");    
+    </script>   
+    <?php
+    }
     
     
     

@@ -79,38 +79,18 @@ $username=$_POST["username"];
      
 $password=$_POST["password"];
     
-/*echo($username);*/
-/*echo($password);   */
 
 
 $sql_u ="SELECT * FROM `user_info` WHERE `username`='$username' "; 
 
      $result_u = mysqli_query($conn, $sql_u );
-/*    if (!$result_u) {
- printf("Error: %s\n", mysqli_error($conn));
- exit();
-}*/
-/*$row_u=$result_u->fetch_row();*/
+
 $array=mysqli_fetch_array($result_u,MYSQLI_NUM);  
   mysqli_free_result($result_u);   
-    
-/*    var_dump($row_u);
- */
-    /*var_dump($array);*/ 
+
   $name = $array[4];
   $pass = $array[5];
-    /*echo ($name); */  
-   /* echo"hello world!";*/
-  
-   /* $result_p = mysqli_query($conn, $sql_p );
-   $row_p=$result_p->fetch_row(); 
-    
- var_dump($row_p);*/
-    /*var_dump($array); */
-
-  
-  /*var_dump($result_p);
-      */
+ 
     
   
     
