@@ -6,10 +6,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
-    <script type="text/javascript" src="create-account.php"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/templatemo_style.css" rel="stylesheet" type="text/css">	
+    
 </head>
 <body class="templatemo-bg-gray">
 	<h1 class="margin-bottom-15">Create Account</h1>
@@ -38,14 +38,7 @@
 			            <label for="username" class="control-label">Username</label>
 			            <input type="text" class="form-control" id="username" placeholder=""name="username">		            		            		            
 			          </div>
-			          <div class="col-md-6 templatemo-radio-group">
-			          	<label class="radio-inline">
-		          			<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Male
-		          		</label>
-		          		<label class="radio-inline">
-		          			<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Female
-		          		</label>
-			          </div>             
+			                   
 			        </div>
 			        <div class="form-group">
 			          <div class="col-md-6">
@@ -58,39 +51,20 @@
 			          </div>
 			        </div>
 			        <div class="form-group">
-			          <div class="col-md-12">
-			            <label><input type="checkbox">I agree to the <a href="javascript:;" data-toggle="modal" data-target="#templatemo_modal">Terms of Service</a> and <a href="#">Privacy Policy.</a></label>
-			          </div>
+			       
 			        </div>
 			        <div class="form-group">
 			          <div class="col-md-12">
 			            <input type="submit" value="Create account" class="btn btn-info">
-			            <a href="views/login-1.php" class="pull-right">Login</a>
+			            <a href="login-1.php" class="pull-right">[ Login ]</a>
+                             <a href="home-page.html" class="pull-right">[ Home ]</a> 
 			          </div>
 			        </div>	
 				</div>				    	
 		      </form>		      
 		</div>
 	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="templatemo_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Terms of Service</h4>
-	      </div>
-	      <div class="modal-body">
-	      	<p>This form is provided by <a rel="nofollow" href="http://www.cssmoban.com/page/1">Free HTML5 Templates</a> that can be used for your websites. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-	        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-	        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
@@ -135,7 +109,7 @@ $sql_u ="SELECT * FROM `user_info` WHERE `username`='$username' ";
     $array=mysqli_fetch_array($result_u,MYSQLI_NUM);  
     mysqli_free_result($result_u); 
      $name = $array[4];
-    
+    $email_db= $array[3];
     
     
 if($password !=$password_confirm )
@@ -191,7 +165,14 @@ if($password !=$password_confirm )
     <?php
     }
     
-    
+    else if($email== $email)
+    {
+        ?>
+  <script>
+   alert("Email has been used\n");    
+    </script>   
+    <?php
+    }
     
     
     
