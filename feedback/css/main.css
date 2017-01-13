@@ -112,6 +112,7 @@ li:last-child .review, #content > .review {
 #lists .review .published{
     position:absolute;
 		left:5%;
+		text-decoration: none;
 }
 
 #lists .review .author{
@@ -131,6 +132,7 @@ li:last-child .review, #content > .review {
 	overflow: hidden;
 	padding: 20px 20px;
 	width: 760px;
+
 
 	border-radius: 10px;
 	-moz-border-radius: 10px;

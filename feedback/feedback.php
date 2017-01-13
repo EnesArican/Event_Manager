@@ -31,7 +31,46 @@ $has_comments = (count($comments) > 0);
 	<section id="comments" class="body">
     <h2>Comments</h2>
     <ol id="lists" class="hfeed<?php echo($has_comments?' has-comments':''); ?>">
-      <li class="no-comments">Be the first to add a comment.</li>
+
+			<li><article class="review">
+
+					<abbr class="published"><p>12&nbsp;January&nbsp;2017</p></abbr>
+
+					<address class="author">By&nbsp;Martin21</a></address>
+
+					<div class="entry-content"><p>Event Name:&nbsp;John from the park and friends </p></div>
+
+					<div class="rating"><p>Rating:5</p></div>
+
+					<div class="entry-content"><p>This was an excellent show!</p></div>
+			</li>
+
+			<li><article class="review">
+
+					<abbr class="published"><p>13&nbsp;January&nbsp;2017</p></abbr>
+
+					<address class="author">By&nbsp;EArican</a></address>
+
+					<div class="entry-content"><p>Event Name:&nbsp;Cognition - Night of Jazz</p></div>
+
+					<div class="rating"><p>Rating:4</p></div>
+
+					<div class="entry-content"><p>It was really good!</p></div>
+			</li>
+
+			<li><article class="review">
+
+					<abbr class="published"><p>13&nbsp;January&nbsp;2017</p></abbr>
+
+					<address class="author">By&nbsp;jhonny</a></address>
+
+					<div class="entry-content"><p>Event Name:&nbsp;Snowman</p></div>
+
+					<div class="rating"><p>Rating:5</p></div>
+
+					<div class="entry-content"><p>I came with my friends. It was fantastic rock show!!!</p></div>
+			</li>
+
       <?php
         foreach ($comments as &$comment) {
           ?>
