@@ -40,7 +40,7 @@ $has_comments = (count($comments) > 0);
 
 					<div class="entry-content"><p>Event Name:&nbsp;John from the park and friends </p></div>
 
-					<div class="rating"><p>Rating:5</p></div>
+					<div class="rating"><p>Rating:&nbsp;5</p></div>
 
 					<div class="entry-content"><p>This was an excellent show!</p></div>
 			</li>
@@ -53,7 +53,7 @@ $has_comments = (count($comments) > 0);
 
 					<div class="entry-content"><p>Event Name:&nbsp;Cognition - Night of Jazz</p></div>
 
-					<div class="rating"><p>Rating:4</p></div>
+					<div class="rating"><p>Rating:&nbsp;4</p></div>
 
 					<div class="entry-content"><p>It was really good!</p></div>
 			</li>
@@ -66,7 +66,7 @@ $has_comments = (count($comments) > 0);
 
 					<div class="entry-content"><p>Event Name:&nbsp;Snowman</p></div>
 
-					<div class="rating"><p>Rating:5</p></div>
+					<div class="rating"><p>Rating:&nbsp;5</p></div>
 
 					<div class="entry-content"><p>I came with my friends. It was fantastic rock show!!!</p></div>
 			</li>
@@ -77,7 +77,7 @@ $has_comments = (count($comments) > 0);
           <li><article id="comment_<?php echo($comment['id']); ?>" class="review">
 
     					<abbr class="published" title="<?php echo($comment['date']); ?>">
-    						      <?php echo( date('d F Y', strtotime($comment['date']) ) ); ?>
+    						      <?php echo(date('d F Y', strtotime($comment['date']) ) ); ?>
     					</abbr>
 
     					<address class="author">
@@ -89,7 +89,7 @@ $has_comments = (count($comments) > 0);
   						</div>
 
     				  <div class="rating">
-							        <p>Rating: <?php echo($comment['testone']); ?></p>
+							        <p>Rating:&nbsp;<?php echo($comment['testone']); ?></p>
 							</div>
 
 						  <div class="entry-content">
