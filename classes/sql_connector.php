@@ -19,7 +19,7 @@ class sql_connector{
 
 
         // connect to the database (persistent)
-        $database = 'Event_Manager';
+        $database = 'event_manager';
 
         try {
             switch(DBENGINE) {
@@ -35,10 +35,10 @@ class sql_connector{
                     $SID['utf8'] = TRUE;
                     break;
                 default:
-                    error('unsupported DBENGINE: ' . DBENGINE);
+                    echo ('unsupported DBENGINE: ' . DBENGINE);
             }
         } catch (PDOException $e) {
-            error("Error while constructing PDO object: " . $e->getMessage());
+           echo ("Error while constructing PDO object: " . $e->getMessage());
         }
 
         if($dbh) {
