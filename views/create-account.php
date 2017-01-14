@@ -165,7 +165,7 @@ if($password !=$password_confirm )
     <?php
     }
     
-    else if($email== $email)
+    else if($email_db== $email)
     {
         ?>
   <script>
