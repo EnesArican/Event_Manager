@@ -33,7 +33,8 @@ function main($sql){
 
 function find_events($sql){
 
-    $query = "SELECT id FROM events WHERE events.date_time = CURDATE()+4";
+    $query = "SELECT id, event_name FROM events WHERE date_time 
+           >= CURDATE()+3 AND date_time < CURDATE()+4";
 
     $events = $sql->execute_select_query($query);
 
@@ -43,15 +44,17 @@ function find_events($sql){
         $events ->setFetchMode(PDO::FETCH_ASSOC);
 
         foreach($events as $e){
-            $e = implode("",$e);
-            print_r($e);
-            find_user($e, $sql);
+            find_users($e, $sql);
         }
     }
 }
 
 
-function find_user($event_id, $sql){
+function find_users($event, $sql){
+
+    $event_name = $event['event_name'];
+    $event_id = $event['id'];
+
 
     $query = "SELECT user_info.email FROM user_info
               INNER JOIN bookings
@@ -65,9 +68,51 @@ function find_user($event_id, $sql){
         $user_mails ->setFetchMode(PDO::FETCH_ASSOC);
 
         foreach($user_mails as $u){
-            $u = implode("",$u);
-            print_r($u);
+            $email = $u['email'];
+           //echo $email.$event_name;
+            send_mail($email, $event_name);
+
         }
     }
 
 }
+
+
+function send_mail($email, $event_name){
+
+
+
+    $body = "Your event ".$event_name." is coming soon. Don't forget to attend!";
+
+    require_once ('/usr/share/pear/Mail.php');
+
+    $headers = array (
+        'From' => 'enesarican@hotmail.com',
+        'To' => $email,
+        'Subject' => 'Your Event Is Coming Soon');
+
+
+
+    $smtpParams = array (
+        'host' => 'email-smtp.us-west-2.amazonaws.com',
+        'port' => '587',
+        'auth' => true,
+        'username' => 'AKIAI2FMDBJJZKP5QDLQ',
+        'password' => 'AhTF9QQfYNt6X1WEL1PwzHjSb4ZwOz3avAmA8OTW3ACr'
+    );
+
+// Create an SMTP client.
+    $mail = Mail::factory('smtp', $smtpParams);
+
+// Send the email.
+    $result = $mail->send($email, $headers, $body);
+
+    if (PEAR::isError($result)) {
+        echo("Email not sent. " .$result->getMessage() ."\n");
+    } else {
+        echo("Email sent!"."\n");
+    }
+
+}
+
+

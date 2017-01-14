@@ -144,8 +144,7 @@ $description=$_POST["description"];
 $category=$_POST["category"];
 
 
-
-$array=array("Classical","Hip pop","Rock","Techno","Jazz","R&B","Rap","Other");
+$array=array("Classical","Hip Hop","Rock","Techno","Jazz","R&B","Rap","Other");
     
 $date_time=$date." ".$time;
 

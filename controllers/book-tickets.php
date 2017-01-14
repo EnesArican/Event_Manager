@@ -72,7 +72,7 @@ function main($sql, $user_id){
 
 
 function send(){
-  $mail=$_SESSION['user_email']; 
+  $mail=$_SESSION['user_email'];
 $to = "$mail";
 $subject = "Your Event Is Coming Soon";
 $message = "Your event ".$event."is coming soon. Do forget to attend!";
@@ -81,9 +81,9 @@ $headers = "From: $from";
 mail($to,$subject,$message,$headers);
 
 // send a email//
-  
 
-    
+
+
 }
     
 
