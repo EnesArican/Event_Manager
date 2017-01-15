@@ -60,7 +60,7 @@ class sql_connector{
             $result = $dbh->query($query);
             return $result;
         } catch (PDOException $e) {
-            error_message($e->getMessage());
+            echo ($e->getMessage());
             return;
         }
     }
@@ -74,7 +74,7 @@ class sql_connector{
             $result = $conn->execute();
             return $result;
         } catch (PDOException $e) {
-            error_message($e->getMessage());
+            echo ($e->getMessage());
             return;
         }
     }

@@ -6,8 +6,11 @@
  * Time: 18:01
  */
 
-// Replace sender@example.com with your "From" address.
-// This address must be verified with Amazon SES.
+
+//THIS IS A TEST FILE ---> NOT USED IN PROJECT
+
+
+
 define('SENDER', 'enesarican@hotmail.com');
 
 // Replace recipient@example.com with a "To" address. If your account
@@ -58,3 +61,4 @@ if (PEAR::isError($result)) {
 } else {
     echo("Email sent!"."\n");
 }
+

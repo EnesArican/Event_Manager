@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+	<title>Feedback</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="../css/feedback-main.css" type="text/css" />
+
+</head>
+
+<body id="index" class="home">
+
+	<header id="title" class="body">
+		<h1><strong>Feedback</strong></h1>
+	</header>
+
+	<section id="content" class="body">
+		<header>
+			<div class="control-wrapper">
+				<a href="home-page.html" class="pull-right">[ Home ]</a>
+			</div>
+			<h2 class="secondtitle">PLEASE GIVE US YOUR VALUABLE FEEDBACK!!</a></h2>
+
+		</header>
+	</section>
+
+	<section id="comments" class="body">
+
+		<div id="writing">
+      <h3>Leave a Comment</h3>
+
+      <form action="../controllers/browser-search.php" method="post" id="comment-form">
+
+
+        <label class="required">Your event name</label>
+
+		  <div id="event_name"></div>
+
+							<div> How do you think this event?*&nbsp;&nbsp;<select name="rating" id="rating" required="required">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select> 1:bad &nbsp; 2:okay&nbsp; 3:good&nbsp; 4:very good&nbsp; 5:excellent
+						</div>
+
+        <label for="comment" class="required">Your message</label>
+        <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+
+        <input name="submit" type="submit" value="Submit" style="position:relative; top:10px; left: 40%;">
+
+      </form>
+    </div>
+
+		<h2>Comments</h2>
+		<ol id="lists" class="feedback">
+
+
+		</ol>
+
+	</section>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+	<script type="text/javascript" src="../js/feedback.js"></script>
+
+
+
+</body>
+</html>

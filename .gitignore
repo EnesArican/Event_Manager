@@ -1,2 +1,4 @@
 .idea/
 test_debug/
+debug.log
+mail/amazon-smtp.php

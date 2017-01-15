@@ -26,6 +26,7 @@ function get_username(){
         url: "../controllers/get-username.php",
         success: (function (responseText) {
             $('#heading').append(responseText);
+
         }),
         error: (function(){
         })

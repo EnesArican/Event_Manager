@@ -6,7 +6,7 @@
 /***** Global *****/
 /* Body */
 body {
-		background: #F5F4EF url('../images/bg.png');
+		background: #F5F4EF url('../feedback/images/bg.png');
 		color: #000305;
 		font-size: 87.5%; /* Base font size: 14px */
 		font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -18,7 +18,8 @@ body {
 
 /* Headings */
 h2 {
-	font-size: 1.6em
+	font-size: 1.6em;
+	margin-top: 20px;
 }
 
 h3 {
@@ -28,7 +29,7 @@ h3 {
 h2, h3{
 	font-weight: 400;
 	line-height: 1.1;
-	margin-bottom: .8em;
+	margin-bottom: .3em;
 }
 
 /* Lists */
@@ -152,7 +153,7 @@ li:last-child .review, #content > .review {
 }
 
 #writing {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 #writing input[type='text'],
@@ -160,7 +161,7 @@ li:last-child .review, #content > .review {
   margin-bottom: 10px;
   display: block;
   width: 100%;
-  background: #F5F4EF url('../images/bg.png');
+  background: #F5F4EF url('../feedback/images/bg.png');
   border: 1px solid rgba(0, 0, 255, 0.3);
   line-height: 1.4em;
 }
@@ -184,14 +185,14 @@ textarea {
 }
 
 input[type='submit']{
-	border: 0.2;
+
 	border-radius: 5px;
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
 	padding: .3em 2em;
-	box-shadow: 1px 1px 1px 1px #000;*/
-  border-color:blue;
+	box-shadow: 1px 1px 1px 1px #000;
+    border-color: blue;
 }
 
 input[type='submit'] :link,input[type='submit'] :visited{
@@ -207,4 +208,8 @@ input[type='submit'] :hover{
 textarea {
 		width: 99%;
 		margin-bottom: 7px;
+}
+
+.control-wrapper{
+	float: right;
 }

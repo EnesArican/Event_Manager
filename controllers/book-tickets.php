@@ -65,27 +65,14 @@ function main($sql, $user_id){
         // Book ticket -> update sql tables
         $booker->book_ticket($sql,$event_id,$user_id);
         echo "Event has been booked";
-        
-       
+
     }
 }
 
 
-function send(){
-  $mail=$_SESSION['user_email'];
-$to = "$mail";
-$subject = "Your Event Is Coming Soon";
-$message = "Your event ".$event."is coming soon. Do forget to attend!";
-$from = "wangshenbao.ben@gmail.com";
-$headers = "From: $from";
-mail($to,$subject,$message,$headers);
-
-// send a email//
 
 
 
-}
-    
 
     
     
